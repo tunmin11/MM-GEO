@@ -1,4 +1,4 @@
-[
+return [
     {
       "states": {
         "eng": "Magway Region",
