@@ -1,7 +1,7 @@
 
-# MMGeo
+# @tm11/mmgeo
 
-**MMGeo** is a simple and comprehensive NPM package that provides geographic data for Myanmar, including states, districts, and townships. The data is available in both English and Myanmar languages, making it useful for localization purposes.
+**@tm11/mmgeo** is a simple and comprehensive NPM package that provides geographic data for Myanmar, including states, districts, and townships. The data is available in both English and Myanmar languages, making it useful for localization purposes.
 
 ## Features
 
@@ -25,13 +25,13 @@
 You can install this package using NPM:
 
 ```bash
-npm install mmgeo
+npm install @tm11/mmgeo
 ```
 
 Or with Yarn:
 
 ```bash
-yarn add mmgeo
+yarn add @tm11/mmgeo
 ```
 
 ## Usage
@@ -41,7 +41,7 @@ yarn add mmgeo
 Once installed, you can import and use the package in your project:
 
 ```ts
-import { getStates, getDistrictsByState, getTownshipsByDistrict, setLanguage } from 'mmgeo';
+import { getStates, getDistrictsByState, getTownshipsByDistrict, initialize } from '@tm11/mmgeo';
 ```
 
 ### Get States
@@ -86,10 +86,10 @@ console.log(townships);
 
 ### Language Configuration
 
-By default, the data is returned in English. You can easily switch to Myanmar language using the `setLanguage` function:
+By default, the data is returned in English. You can easily switch to Myanmar language using the `initialize` function:
 
 ```ts
-setLanguage('mm');  // Switch to Myanmar language
+initialize({ language: 'mm' });  // Switch to Myanmar language
 const statesInMyanmar = getStates();
 console.log(statesInMyanmar);
 
@@ -101,20 +101,20 @@ console.log(statesInMyanmar);
 // ]
 
 // You can switch back to English by calling:
-setLanguage('eng');
+initialize({ language: 'eng' });
 ```
 
 ### Full Example
 
 ```ts
-import { getStates, getDistrictsByState, getTownshipsByDistrict, setLanguage } from 'mmgeo';
+import { getStates, getDistrictsByState, getTownshipsByDistrict, initialize } from '@tm11/mmgeo';
 
 // Get states in English
 let states = getStates();
 console.log(states);
 
 // Switch to Myanmar language
-setLanguage('mm');
+initialize({ language: 'mm' });
 
 // Get states in Myanmar
 states = getStates();

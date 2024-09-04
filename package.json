@@ -1,17 +1,26 @@
 {
-  "name": "mmgeo",
+  "name": "@tm11/mmgeo",
   "version": "1.0.0",
   "description": "A comprehensive package providing states, districts, and townships data for Myanmar in both English and Myanmar languages.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest"
   },
-  "keywords": ["Myanmar", "geo-data", "states", "districts", "townships", "localization", "geography"],
+  "keywords": [
+    "Myanmar",
+    "geo-data",
+    "states",
+    "districts",
+    "townships",
+    "localization",
+    "geography"
+  ],
   "author": "tunmin tunmin2000@gmail.com",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tunmin11/Myanmar-States-Districts-Townships-JSON"
+    "url": "git+https://github.com/tunmin11/Myanmar-States-Districts-Townships-JSON.git"
   },
   "bugs": {
     "url": "https://github.com/tunmin11/Myanmar-States-Districts-Townships-JSON/issues"

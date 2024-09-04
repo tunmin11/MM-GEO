@@ -1,6 +1,5 @@
 import geoData from '../data/db.json';
 import { getName } from './utils';
-import { State as StateType, District as DistrictType, Township as TownshipType } from './types';
 
 // Class structure for State, District, and Township
 class Township {
@@ -61,3 +60,5 @@ export const getStates = (): State[] => {
     ))  // Map districts
   ));
 };
+
+export { initialize } from './hook'
