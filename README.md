@@ -1,12 +1,11 @@
 
 # @tm11/mmgeo
 
-**@tm11/mmgeo** is a simple and comprehensive NPM package that provides geographic data for Myanmar, including states, districts, and townships. The data is available in both English and Myanmar languages, making it useful for localization purposes.
+**@tm11/mmgeo** is a simple and comprehensive NPM package that provides geographic data for Myanmar, including states. The data is available in both English and Myanmar languages, making it useful for localization purposes.
 
 ## Features
 
-- Retrieve Myanmar's states, districts, and townships in both English and Myanmar.
-- Object-oriented API for easy access to geographical data.
+- Retrieve Myanmar's states in both English and Myanmar.
 - Simple configuration for switching between languages.
 
 ## Table of Contents
@@ -14,8 +13,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
   - [Get States](#get-states)
-  - [Get Districts by State](#get-districts-by-state)
-  - [Get Townships by District and State](#get-townships-by-district-and-state)
   - [Language Configuration](#language-configuration)
 - [Contributing](#contributing)
 - [License](#license)
@@ -23,6 +20,10 @@
 ## Installation
 
 You can install this package using NPM:
+
+[![NPM Version](https://img.shields.io/npm/v/@tm11/mmgeo.svg)](https://www.npmjs.com/package/@tm11/mmgeo)  
+[![NPM Downloads](https://img.shields.io/npm/dt/@tm11/mmgeo.svg)](https://www.npmjs.com/package/@tm11/mmgeo)
+
 
 ```bash
 npm install @tm11/mmgeo
@@ -41,7 +42,7 @@ yarn add @tm11/mmgeo
 Once installed, you can import and use the package in your project:
 
 ```ts
-import { getStates, getDistrictsByState, getTownshipsByDistrict, initialize } from '@tm11/mmgeo';
+import { getStates, initialize } from '@tm11/mmgeo';
 ```
 
 ### Get States
@@ -58,30 +59,6 @@ console.log(states);
 //   { name: 'Mandalay', lat: 21.9162, lng: 96.0891, capital: 'Mandalay' },
 //   ...
 // ]
-```
-
-### Get Districts by State
-
-You can retrieve the districts within a state by passing the state name:
-
-```ts
-const districts = getDistrictsByState('Yangon');
-console.log(districts);
-
-// Output:
-// [{ name: 'Yangon East' }, { name: 'Yangon West' }, ...]
-```
-
-### Get Townships by District and State
-
-To get the townships for a specific district within a state:
-
-```ts
-const townships = getTownshipsByDistrict('Yangon', 'Yangon East');
-console.log(townships);
-
-// Output:
-// [{ name: 'Thingangyun' }, { name: 'South Okkalapa' }, ...]
 ```
 
 ### Language Configuration
@@ -107,7 +84,7 @@ initialize({ language: 'eng' });
 ### Full Example
 
 ```ts
-import { getStates, getDistrictsByState, getTownshipsByDistrict, initialize } from '@tm11/mmgeo';
+import { getStates, initialize } from '@tm11/mmgeo';
 
 // Get states in English
 let states = getStates();
@@ -119,14 +96,6 @@ initialize({ language: 'mm' });
 // Get states in Myanmar
 states = getStates();
 console.log(states);
-
-// Get districts in Yangon
-const districts = getDistrictsByState('ရန်ကုန်');
-console.log(districts);
-
-// Get townships in Yangon East district
-const townships = getTownshipsByDistrict('ရန်ကုန်', 'ရန်ကုန်အရှေ့ပိုင်း');
-console.log(townships);
 ```
 
 ## Contributing
