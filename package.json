@@ -1,6 +1,6 @@
 {
   "name": "@tm11/mmgeo",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A comprehensive package providing states, districts, and townships data for Myanmar in both English and Myanmar languages.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
