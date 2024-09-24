@@ -1,29 +1,17 @@
 
 # @tm11/mmgeo
 
-**@tm11/mmgeo** is a simple and comprehensive NPM package that provides geographic data for Myanmar, including states. The data is available in both English and Myanmar languages, making it useful for localization purposes.
+**@tm11/mmgeo** is a simple and comprehensive NPM package that provides geographic data for Myanmar, including states, districts, and townships. The data is available in both English and Myanmar languages, making it useful for localization purposes.
 
 ## Features
 
-- Retrieve Myanmar's states in both English and Myanmar.
+- Retrieve Myanmar's states, districts, and townships in both English and Myanmar.
+- Object-oriented API for easy access to geographical data.
 - Simple configuration for switching between languages.
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Get States](#get-states)
-  - [Language Configuration](#language-configuration)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
 You can install this package using NPM:
-
-[![NPM Version](https://img.shields.io/npm/v/@tm11/mmgeo.svg)](https://www.npmjs.com/package/@tm11/mmgeo)  
-[![NPM Downloads](https://img.shields.io/npm/dt/@tm11/mmgeo.svg)](https://www.npmjs.com/package/@tm11/mmgeo)
-
 
 ```bash
 npm install @tm11/mmgeo
@@ -35,76 +23,94 @@ Or with Yarn:
 yarn add @tm11/mmgeo
 ```
 
+
+[![NPM Version](https://img.shields.io/npm/v/@tm11/mmgeo.svg)](https://www.npmjs.com/package/@tm11/mmgeo) [![NPM Downloads](https://img.shields.io/npm/dt/@tm11/mmgeo.svg)](https://www.npmjs.com/package/@tm11/mmgeo)
+
 ## Usage
 
-### Importing the package
+### 1. Retrieving States
 
-Once installed, you can import and use the package in your project:
+To retrieve all the states in the dataset, you can use the `getStates()` function. This will return an array of state objects.
+
+#### State Object Structure
+
+Each state object has the following structure:
 
 ```ts
-import { getStates, initialize } from '@tm11/mmgeo';
+export interface State {
+  eng: string;
+  mm: string;
+  lat: number;
+  lng: number;
+  capital: string;
+  districts: District[];
+}
 ```
 
-### Get States
+- `eng`: Name of the state in English.
+- `mm`: Name of the state in Myanmar language.
+- `lat`: Latitude of the state.
+- `lng`: Longitude of the state.
+- `capital`: Capital of the state.
+- `districts`: An array of District objects within the state.
 
-Retrieve a list of all states in Myanmar:
+### 2. Language Configuration
 
-```ts
-const states = getStates();
-console.log(states);
+You can configure the language for the geographic data using the `initialize()` function. The package supports two languages:
 
-// Output: 
-// [
-//   { name: 'Yangon', lat: 16.8661, lng: 96.1951, capital: 'Yangon' },
-//   { name: 'Mandalay', lat: 21.9162, lng: 96.0891, capital: 'Mandalay' },
-//   ...
-// ]
-```
+- `'en'` for English (default)
+- `'mm'` for Myanmar
 
-### Language Configuration
-
-By default, the data is returned in English. You can easily switch to Myanmar language using the `initialize` function:
+Example:
 
 ```ts
-initialize({ language: 'mm' });  // Switch to Myanmar language
-const statesInMyanmar = getStates();
-console.log(statesInMyanmar);
+import { initialize, getStates } from '@tm11/mmgeo';
 
-// Output in Myanmar language:
-// [
-//   { name: 'ရန်ကုန်', lat: 16.8661, lng: 96.1951, capital: 'ရန်ကုန်' },
-//   { name: 'မန္တလေး', lat: 21.9162, lng: 96.0891, capital: 'မန္တလေး' },
-//   ...
-// ]
-
-// You can switch back to English by calling:
-initialize({ language: 'eng' });
-```
-
-### Full Example
-
-```ts
-import { getStates, initialize } from '@tm11/mmgeo';
-
-// Get states in English
-let states = getStates();
-console.log(states);
-
-// Switch to Myanmar language
+// Initialize in Myanmar language
 initialize({ language: 'mm' });
 
 // Get states in Myanmar
-states = getStates();
-console.log(states);
+const statesInMyanmar = getStates();
+console.log(statesInMyanmar);
 ```
 
-## Contributing
+You can switch back to English by calling:
 
-Contributions are welcome! Please follow these steps to contribute:
+```ts
+initialize({ language: 'en' });
+```
 
-1. Fork this repository.
-2. Create a branch for your feature or bug fix.
-3. Submit a pull request with a clear description of your changes.
+### 3. Retrieving Districts and Townships
+
+Similarly, the State object contains `districts`, which are arrays of District objects, and each District contains `townships`.
+
+#### District Object Structure
+
+```ts
+export interface District {
+  eng: string;
+  mm: string;
+  townships: Township[];
+}
+```
+
+- `eng`: Name of the district in English.
+- `mm`: Name of the district in Myanmar.
+- `townships`: An array of Township objects within the district.
+
+#### Township Object Structure
+
+```ts
+export interface Township {
+  eng: string;
+  mm: string;
+}
+```
+
+- `eng`: Name of the township in English.
+- `mm`: Name of the township in Myanmar.
+
+Both District and Township objects come with a `getName()` function, which returns the name based on the currently initialized language setting.
 
 ## License
 
